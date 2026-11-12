@@ -1,11 +1,19 @@
 const evaluaciones = [
-    {
+  {
     id: "05",
     fecha: "2026-11-13",
     materia: "Musica",
     tipo: "Taller Grupal",
     descripcion: "El Pentagrama",
     criterio: "Taller en grupo de 5 o 6 integrantes, en el cual se debe traer: papel bond, regla y marcadores.",
+  },
+  {
+    id: "01",
+    fecha: "2026-11-13",
+    materia: "Ingles",
+    tipo: "Examen",
+    descripcion: "Adjetivos",
+    criterio: "Examen de ingles en pareja a cuaderno cerrado, el contenido del examen se encuentra en el apartado de Cuaderno de Clases Generales de la app.",
   },
 ];
 
@@ -24,21 +32,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const distancia = fechaFinCurso - ahora;
     const contadorDiv = document.getElementById("countdown-timer");
 
-    if (contadorDiv && distancia > 0) {
+    if (distancia > 0) {
       const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
       const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-      const dElem = document.getElementById("days");
-      const hElem = document.getElementById("hours");
-      const mElem = document.getElementById("minutes");
-      const sElem = document.getElementById("seconds");
-
-      if (dElem) dElem.textContent = String(dias).padStart(2, '0');
-      if (hElem) hElem.textContent = String(horas).padStart(2, '0');
-      if (mElem) mElem.textContent = String(minutos).padStart(2, '0');
-      if (sElem) sElem.textContent = String(segundos).padStart(2, '0');
+      document.getElementById("days").textContent = String(dias).padStart(2, '0');
+      document.getElementById("hours").textContent = String(horas).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(minutos).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(segundos).padStart(2, '0');
+    } else {
+      contadorDiv.innerHTML = `
+        <div style="grid-column: span 4; background: linear-gradient(135deg, #06b6d4, #d946ef); padding: 20px; border-radius: 12px; color: white; text-align: center; box-shadow: 0 0 20px rgba(217, 70, 239, 0.5);">
+          <h3 style="font-size: 1.4rem; margin-bottom: 8px;">🎓 ¡MISIÓN CUMPLIDA! 🎓</h3>
+          <p style="font-size: 0.9rem; margin-bottom: 12px; line-height: 1.4;">
+            ¡Al fin libres de tareas, carpetas y profes! Sobrevivimos a las desveladas y exámenes de 5to año. ¡A dormir por fin!
+          </p>
+          <button id="btn-certificado" class="secondary-btn" style="background: #ffffff; color: #0f111a; font-weight: bold;">
+            Ver Certificado de Supervivencia 📜
+          </button>
+        </div>
+      `;
+      const btnCertificado = document.getElementById("btn-certificado");
+      if (btnCertificado) {
+        btnCertificado.addEventListener("click", () => {
+          alert("📜 CERTIFICADO OFICIAL: Se certifica que este estudiante aguantó todo el 5to año con éxito absoluto. ¡Disfruta tus merecidas vacaciones!");
+        });
+      }
     }
   }
   
@@ -48,30 +69,31 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- 2. FRASES SARCÁSTICAS ESTUDIANTILES ---
   const frases = [
     "“Deja para mañana lo que puedas hacer hoy. att:Vitico”",
-    "“Si el director dice que eres el futuro del pais, preocupate por el pais. att:Leandro”",
+    "“Si el director dice que eres el futuro del pais, procupate por el pais. att:Leandro”",
     "“El que estudia duda de sus conocimientos. att:Noel.”",
   ];
   const quoteText = document.getElementById("quote-text");
-  const quoteBtn = document.getElementById("new-quote-btn");
-  if (quoteBtn && quoteText) {
-    quoteBtn.addEventListener("click", () => {
-      const aleatoria = frases[Math.floor(Math.random() * frases.length)];
-      quoteText.textContent = aleatoria;
-    });
-  }
+  document.getElementById("new-quote-btn").addEventListener("click", () => {
+    const aleatoria = frases[Math.floor(Math.random() * frases.length)];
+    quoteText.textContent = aleatoria;
+  });
 
-  // --- 3. BLOC DE NOTAS RÁPIDAS Y MODAL ---
+// --- 3. BLOC DE NOTAS RÁPIDAS Y MODAL ---
   const notesArea = document.getElementById("quick-notes");
   const notesContainer = document.getElementById("notes-container");
   const modalOverlay = document.getElementById("custom-modal-overlay");
   const modalCloseBtn = document.getElementById("modal-close-btn");
 
   function mostrarModalAlerta() {
-    if (modalOverlay) modalOverlay.classList.add("active");
+    if (modalOverlay) {
+      modalOverlay.classList.add("active");
+    }
   }
 
   function ocultarModalAlerta() {
-    if (modalOverlay) modalOverlay.classList.remove("active");
+    if (modalOverlay) {
+      modalOverlay.classList.remove("active");
+    }
   }
 
   if (modalCloseBtn) {
@@ -85,7 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function cargarNotasGuardadas() {
-    if (!notesContainer) return;
     const notasGuardadas = JSON.parse(localStorage.getItem("mis_notas_tarjetas")) || [];
     notesContainer.innerHTML = "";
 
@@ -133,80 +154,75 @@ document.addEventListener("DOMContentLoaded", () => {
   const alertBanner = document.getElementById("global-alert");
   const alertText = document.getElementById("global-alert-text");
 
-  // Toma la fecha real del sistema de forma dinámica
   const hoyStr = obtenerFechaLocal();
-  const hoy = new Date(hoyStr + "T00:00:00");
+  const hoy = new Date(hoyStr);
   let evaluacionesUrgentes = [];
 
   evaluaciones.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
-  if (container) {
-    container.innerHTML = "";
+  container.innerHTML = "";
 
-    evaluaciones.forEach((ev) => {
-      const fechaEv = new Date(ev.fecha + "T00:00:00");
-      const diferenciaTiempo = fechaEv - hoy;
-      const diasRestantes = Math.round(diferenciaTiempo / (1000 * 60 * 60 * 24));
+  evaluaciones.forEach((ev) => {
+    const fechaEv = new Date(ev.fecha);
+    const diferenciaTiempo = fechaEv - hoy;
+    const diasRestantes = Math.ceil(diferenciaTiempo / (1000 * 60 * 60 * 24));
 
-      if (diasRestantes < 0) return;
+    if (diasRestantes < 0) return;
 
-      const esUrgente = diasRestantes <= 2;
-      if (esUrgente) {
-        evaluacionesUrgentes.push(
-          `${ev.materia} (${diasRestantes === 0 ? "Hoy" : diasRestantes === 1 ? "Mañana" : "En 2 días"})`
-        );
-      }
-
-      const partesFecha = ev.fecha.split("-");
-      const fechaFormateada = `${partesFecha[2]}/${partesFecha[1]}/${partesFecha[0]}`;
-
-      let textoDias = `Faltan ${diasRestantes} días`;
-      if (diasRestantes === 0) textoDias = "¡Es Hoy!";
-      if (diasRestantes === 1) textoDias = "Es Mañana";
-
-      const card = document.createElement("div");
-      card.className = `card ${esUrgente ? "urgent" : ""}`;
-      card.innerHTML = `
-        <div class="card-header">
-            <div class="meta-info">
-                <span class="date-badge">${fechaFormateada}</span>
-                <h2 class="subject-title">${ev.materia}</h2>
-            </div>
-            <span class="type-tag">${ev.tipo}</span>
-        </div>
-        <div class="countdown-text">${textoDias}</div>
-        <div class="card-details">
-            <div class="detail-block">
-                <div class="detail-label">¿De qué trata?</div>
-                <div class="detail-value">${ev.descripcion}</div>
-            </div>
-            <div class="detail-block">
-                <div class="detail-label">¿Cómo es la evaluación?</div>
-                <div class="detail-value">${ev.criterio}</div>
-            </div>
-        </div>
-      `;
-
-      card.addEventListener("click", () => {
-        card.classList.toggle("active");
-      });
-
-      container.appendChild(card);
-    });
-  }
-
-  if (alertBanner && alertText) {
-    if (evaluacionesUrgentes.length > 0) {
-      alertText.innerHTML = `<strong>ALERTA DE EVALUACIÓN:</strong> Tienes entregas críticas pronto: ${evaluacionesUrgentes.join(", ")}. Revisa los temarios de inmediato.`;
-      alertBanner.style.display = "flex";
-    } else {
-      alertBanner.style.display = "none";
+    const esUrgente = diasRestantes <= 2;
+    if (esUrgente) {
+      evaluacionesUrgentes.push(
+        `${ev.materia} (${diasRestantes === 0 ? "Hoy" : diasRestantes === 1 ? "Mañana" : "En 2 días"})`
+      );
     }
+
+    const partesFecha = ev.fecha.split("-");
+    const fechaFormateada = `${partesFecha[2]}/${partesFecha[1]}/${partesFecha[0]}`;
+
+    let textoDias = `Faltan ${diasRestantes} días`;
+    if (diasRestantes === 0) textoDias = "¡Es Hoy!";
+    if (diasRestantes === 1) textoDias = "Es Mañana";
+
+    const card = document.createElement("div");
+    card.className = `card ${esUrgente ? "urgent" : ""}`;
+    card.innerHTML = `
+      <div class="card-header">
+          <div class="meta-info">
+              <span class="date-badge">${fechaFormateada}</span>
+              <h2 class="subject-title">${ev.materia}</h2>
+          </div>
+          <span class="type-tag">${ev.tipo}</span>
+      </div>
+      <div class="countdown-text">${textoDias}</div>
+      <div class="card-details">
+          <div class="detail-block">
+              <div class="detail-label">¿De qué trata?</div>
+              <div class="detail-value">${ev.descripcion}</div>
+          </div>
+          <div class="detail-block">
+              <div class="detail-label">¿Cómo es la evaluación?</div>
+              <div class="detail-value">${ev.criterio}</div>
+          </div>
+      </div>
+    `;
+
+    card.addEventListener("click", () => {
+      card.classList.toggle("active");
+    });
+
+    container.appendChild(card);
+  });
+
+  if (evaluacionesUrgentes.length > 0) {
+    alertText.innerHTML = `<strong>ALERTA DE EVALUACIÓN:</strong> Tienes entregas críticas pronto: ${evaluacionesUrgentes.join(", ")}. Revisa los temarios de inmediato.`;
+    alertBanner.style.display = "flex";
+  } else {
+    alertBanner.style.display = "none";
   }
 
   // --- CALENDARIO ---
-  let fechaActualSistema = new Date();
-  let mesActual = fechaActualSistema.getMonth();
-  let anioActual = fechaActualSistema.getFullYear();
+  let fechaActual = new Date();
+  let mesActual = fechaActual.getMonth();
+  let anioActual = fechaActual.getFullYear();
   const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
   const fechasEvaluaciones = evaluaciones.map(e => e.fecha);
 
@@ -236,13 +252,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const diaFormateado = String(dia).padStart(2, '0');
       const fechaClave = `${anioActual}-${mesFormateado}-${diaFormateado}`;
 
-      // Comprueba dinámicamente el día, mes y año real de hoy
-      if (dia === fechaActualSistema.getDate() && mesActual === fechaActualSistema.getMonth() && anioActual === fechaActualSistema.getFullYear()) {
-        divDia.classList.add("hoy");
+      if (fechasEvaluaciones.includes(fechaClave)) {
+          divDia.classList.add("tiene-evaluacion");
       }
 
-      if (fechasEvaluaciones.includes(fechaClave)) {
-        divDia.classList.add("tiene-evaluacion");
+      const hoyFecha = new Date();
+      if (dia === hoyFecha.getDate() && mesActual === hoyFecha.getMonth() && anioActual === hoyFecha.getFullYear()) {
+        divDia.style.border = "2px solid #00d2ff";
       }
 
       contenedorDias.appendChild(divDia);
@@ -267,3 +283,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderizarCalendario();
 });
+
+// Registro de Service Worker para PWA Offline
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then((registration) => {
+        console.log('Service Worker registrado correctamente:', registration.scope);
+      })
+      .catch((error) => {
+        console.log('Fallo al registrar el Service Worker:', error);
+      });
+  });
+}
