@@ -2,7 +2,9 @@ const CACHE_NAME = 'liceo-app-v1.0';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
+  './tesis.html',
   './style.css',
+  './tesis.css',
   './app.js',
   './manifest.json',
   './icon-192.png',

@@ -1,0 +1,193 @@
+:root {
+  --bg-color: #090b10;
+  --card-bg: rgba(15, 23, 42, 0.7);
+  --text-color: #e2e8f0;
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+  --border-color: rgba(59, 130, 246, 0.2);
+}
+
+body.dark-theme {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-volver {
+  display: inline-block;
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-volver:hover {
+  transform: translateX(-3px);
+  color: #60a5fa;
+}
+
+h1 {
+  color: #ffffff;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5px;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-size: 0.9em;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* Tarjetas con efecto glassmorphism y animación de entrada */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.card h2 {
+  color: var(--accent-blue);
+  margin-top: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* Barras de progreso animadas y con estilo futurista */
+.progress-container {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  height: 14px;
+  overflow: hidden;
+  margin: 10px 0 8px 0;
+  width: 100%;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  height: 100%;
+  width: 0%;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
+.progress-text {
+  font-size: 0.85em;
+  margin: 0;
+  color: #94a3b8;
+}
+
+/* Acordeones con animación suave */
+.accordion details {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  padding: 14px 18px;
+  box-sizing: border-box;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.accordion details[open] {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.accordion summary {
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--accent-blue);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.accordion details[open] summary {
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.accordion ul {
+  padding-left: 20px;
+  margin: 8px 0;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+/* Galería Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+}
+
+.gallery-item {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-blue);
+}
+
+.gallery-item span {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.img-placeholder {
+  background: rgba(255, 255, 255, 0.03);
+  height: 110px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+/* Animaciones CSS Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 600px) {
+  body.dark-theme { padding: 30px; }
+  h1 { font-size: 2.2rem; }
+  .card { padding: 26px; }
+  .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+}

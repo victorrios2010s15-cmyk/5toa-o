@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Guía General de Tesis — 5to Año</title>
+  <link rel="stylesheet" href="./tesis.css?v=1.0">
+</head>
+<body class="dark-theme">
+
+<main class="container">
+  <a href="index.html" class="btn-volver">⬅ Volver</a>
+
+  <h1>Guía Metodológica Global de Tesis</h1>
+  <p class="subtitle">Búnker teórico, estructura estándar y normas para proyectos de investigación</p>
+
+<!-- 1. BARRAS DE PROGRESO (GENERAL Y POR CAPÍTULO) -->
+  <section class="card">
+    <h2>📊 Control de Avance General</h2>
+
+    <!-- Barra 1: Avance General de la Tesis -->
+    <p style="margin-bottom: 5px; font-size: 0.9em;"><strong>Avance General del Proyecto:</strong></p>
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBarGeneral" style="width: 15%;"></div>
+    </div>
+    <p class="progress-text" style="margin-bottom: 20px;">Total completado: <strong id="progressTextGeneral">15%</strong></p>
+
+    <!-- Barra 2: Avance del Capítulo Actual -->
+    <p style="margin-bottom: 5px; font-size: 0.9em;"><strong>Capítulo Activo (Capítulo 1: Diagnóstico Comunitario):</strong></p>
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBarCapitulo" style="width: 40%; background: linear-gradient(90deg, #3b82f6, #8b5cf6);"></div>
+    </div>
+    <p class="progress-text" style="margin-bottom: 20px;">Progreso de la sección: <strong id="progressTextCapitulo">40%</strong></p>
+
+    <!-- Listado de Capítulos (Checklist de Estado) -->
+    <hr style="border-color: var(--border-color); margin: 15px 0;">
+    <h3 style="font-size: 1.1em; color: var(--accent-blue); margin-bottom: 10px;">📋 Estándar de Capítulos de la Tesis</h3>
+    <ul style="list-style: none; padding: 0; font-size: 0.9em;">
+      <li style="padding: 6px 0; border-bottom: 1px solid var(--border-color);">✅ <strong>Capítulo 1:</strong> Diagnóstico y Contextualización (En proceso)</li>
+      <li style="padding: 6px 0; border-bottom: 1px solid var(--border-color); color: #94a3b8;">❌ <strong>Capítulo 2:</strong> El Problema y Marco Teórico (Pendiente)</li>
+      <li style="padding: 6px 0; border-bottom: 1px solid var(--border-color); color: #94a3b8;">❌ <strong>Capítulo 3:</strong> Marco Metodológico (Pendiente)</li>
+      <li style="padding: 6px 0; border-bottom: 1px solid var(--border-color); color: #94a3b8;">❌ <strong>Capítulo 4:</strong> Ejecución de la Propuesta / Plan de Acción (Pendiente)</li>
+      <li style="padding: 6px 0; border-bottom: 1px solid var(--border-color); color: #94a3b8;">❌ <strong>Capítulo 5:</strong> Resultados y Evaluación de Impacto (Pendiente)</li>
+      <li style="padding: 6px 0; color: #94a3b8;">❌ <strong>Capítulo 6:</strong> Conclusiones y Recomendaciones (Pendiente)</li>
+    </ul>
+  </section>
+
+   <!-- 2. CUADERNO TEÓRICO (APUNTES) -->
+  <section class="card">
+    <h2>📖 Cuaderno Metodológico y Normas</h2>
+    <p class="subtitle" style="text-align: left; margin-bottom: 1rem;">Estructura global de referencia para el desarrollo de cualquier proyecto.</p>
+    
+    <div class="accordion">
+
+      <!-- CAPÍTULO 1 -->
+      <details style="background: rgba(15, 23, 42, 0.5); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 15px; padding: 12px 15px;">
+        <summary style="font-size: 1.1em; color: var(--accent-blue); font-weight: bold; cursor: pointer;">📂 Capítulo 1: Diagnóstico y Contextualización</summary>
+        
+        <!-- Sub-acordeones del Capítulo 1 -->
+        <div class="accordion" style="margin-top: 10px; padding-left: 10px;">
+          
+          <details>
+            <summary>1. Estructura del Diagnóstico Comunitario / Institucional</summary>
+            <p><strong>Objetivo:</strong> Contextualizar la realidad de estudio, identificar necesidades prioritarias y justificar la intervención.</p>
+            <ul>
+              <li><strong>Contextualización:</strong> Ubicación geográfica, ámbito histórico y demográfico.</li>
+              <li><strong>Reseña Histórica:</strong> Origen, evolución y momentos clave de la institución o comunidad.</li>
+              <li><strong>Infraestructura y Servicios:</strong> Estado de servicios básicos (agua, electricidad, conectividad) y recursos disponibles.</li>
+              <li><strong>Organización Social:</strong> Actores clave, líderes comunitarios o comités activos.</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>2. Reglas de Oro para Redactar el Título</summary>
+            <p><strong>Fórmula General Estándar:</strong><br>
+            <code>Acción principal + Sujeto u Objeto de Estudio + Delimitación Espacial + Delimitación Temporal</code></p>
+            <ul>
+              <li><strong>Extensión recomendada:</strong> Entre 15 y 27 palabras.</li>
+              <li><strong>Lenguaje:</strong> Formal, técnico y estrictamente descriptivo (evitar títulos poéticos).</li>
+              <li><strong>Verbos iniciales:</strong> No usar verbos en infinitivo (como "Crear" o "Hacer"). Utilizar sustantivos derivados: <em>Diseño, Propuesta, Desarrollo, Implementación, Estrategia</em>.</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>3. Diseño del Guión de Diagnóstico (Instrumentos)</summary>
+            <ul>
+              <li><strong>Eje A (Contexto y Misión):</strong> Trayectoria, población beneficiada directamente y organización general.</li>
+              <li><strong>Eje B (Detección de Necesidades / Nudos Críticos):</strong> Carencias principales, limitantes técnicas y problemáticas a resolver.</li>
+              <li><strong>Eje C (Factibilidad y Viabilidad):</strong> Disponibilidad de espacios, normas internas y disposición de los participantes.</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>4. Redacción del Objetivo General</summary>
+            <p><strong>Estructura clave:</strong> Debe iniciar obligatoriamente con un verbo en infinitivo (ej: <em>Diseñar, Proponer, Capacitar, Desarrollar</em>) respondiendo al <em>qué</em> se hará, <em>para qué</em> y <em>dónde</em>.</p>
+          </details>
+
+          <details>
+            <summary>5. Planteamiento de Objetivos Específicos</summary>
+            <ul>
+              <li><strong>1. Diagnosticar:</strong> Identificar la situación actual y necesidades de la población de estudio.</li>
+              <li><strong>2. Diseñar:</strong> Elaborar la propuesta, plan de acción o estrategia de intervención.</li>
+              <li><strong>3. Ejecutar:</strong> Llevar a cabo las actividades, talleres o fases prácticas planificadas.</li>
+              <li><strong>4. Evaluar:</strong> Medir el impacto y los resultados obtenidos tras la implementación.</li>
+            </ul>
+          </details>
+
+        </div>
+      </details>
+
+      <!-- CAPÍTULOS FUTUROS (GUÍA GLOBAL) -->
+      <details style="background: rgba(15, 23, 42, 0.3); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 10px; padding: 12px 15px; opacity: 0.8;">
+        <summary style="font-size: 1.05em; color: #94a3b8; cursor: pointer;">📁 Capítulo 2: El Problema y Marco Teórico</summary>
+        <p style="margin-top: 10px; color: #94a3b8; font-style: italic;">Antecedentes de la investigación, bases teóricas y definición de términos clave.</p>
+      </details>
+
+      <details style="background: rgba(15, 23, 42, 0.3); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 10px; padding: 12px 15px; opacity: 0.8;">
+        <summary style="font-size: 1.05em; color: #94a3b8; cursor: pointer;">📁 Capítulo 3: Marco Metodológico</summary>
+        <p style="margin-top: 10px; color: #94a3b8; font-style: italic;">Tipo y diseño de investigación, población, muestra, técnicas e instrumentos de recolección de datos.</p>
+      </details>
+
+      <details style="background: rgba(15, 23, 42, 0.3); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 10px; padding: 12px 15px; opacity: 0.8;">
+        <summary style="font-size: 1.05em; color: #94a3b8; cursor: pointer;">📁 Capítulo 4: Ejecución de la Propuesta</summary>
+        <p style="margin-top: 10px; color: #94a3b8; font-style: italic;">Desarrollo cronológico de las fases, talleres o prototipos implementados en campo.</p>
+      </details>
+
+      <details style="background: rgba(15, 23, 42, 0.3); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 10px; padding: 12px 15px; opacity: 0.8;">
+        <summary style="font-size: 1.05em; color: #94a3b8; cursor: pointer;">📁 Capítulo 5: Conclusiones y Recomendaciones</summary>
+        <p style="margin-top: 10px; color: #94a3b8; font-style: italic;">Análisis final del cumplimiento de objetivos y propuestas de mejora a futuro.</p>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- 3. GALERÍA VISUAL Y LÁMINAS -->
+  <section class="card">
+    <h2>🖼️ Repositorio de Documentación y Normas</h2>
+    <p class="subtitle" style="text-align: left; margin-bottom: 1rem;">Esquemas de validación, formatos de croquis y pautas institucionales.</p>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="img-placeholder">Formato Croquis</div>
+        <span>Guía de Diagnóstico</span>
+      </div>
+      <div class="gallery-item">
+        <div class="img-placeholder">Esquema Metodológico</div>
+        <span>Flujo de Investigación</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
