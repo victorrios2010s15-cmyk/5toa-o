@@ -1,7 +1,7 @@
 const evaluaciones = [
   {
     id: "01",
-    fecha: "2026-11-23",
+    fecha: "2026-11-24",
     materia: "Quimica",
     tipo: "Examen",
     descripcion: "Hidrocarburos alifiticos",
@@ -9,7 +9,7 @@ const evaluaciones = [
   },
     {
     id: "02",
-    fecha: "2026-11-23",
+    fecha: "2026-11-26",
     materia: "Matematicas",
     tipo: "Examen",
     descripcion: "Determinante de Tercer Orden",
